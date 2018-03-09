@@ -17,7 +17,30 @@
 
 - Link to the [LCBO API](https://lcboapi.com).
 
-- A link to the NPM package in use (https://www.npmjs.com/package/moment).
+- A link to the NPM package in use: 
+      (https://www.npmjs.com/package/moment)
+      (https://expressjs.com/en/starter/generator.html).
+
+- **timeline** :
+
+    -- Mar 09 = Design and implementation of User and Wine models, creation of DB and tables, testing models using schema.sql and seeds.sql data;
+
+    -- Mar 10 = First(basic) draft of entire structuare of the project, including both client and server modules;
+
+    -- Mar 11 = Implementation of user authentication using OAuth;
+
+    -- Mar 12 = Styling (HTML and CSS);
+
+    -- Mar 13 = Unit and System testing and debugging;
+
+    -- Mar 14 = Final touches;
+
+    -- Mar 15 = Time allotted for dealing with possible roadblocks;
+
+    -- Mar 16 = Installation of the app within external web site, project submition. 
+
+    
+
 
 - Foreseen challenges or obstacles: time-wise uncertanty in estimation of debugging efforts.
 
