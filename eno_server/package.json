@@ -1,0 +1,26 @@
+{
+  "name": "eno_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon -e html,css,js index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "moment": "^2.21.0",
+    "morgan": "^1.9.0",
+    "mustache-express": "^1.2.5",
+    "passport": "^0.4.0",
+    "pg-promise": "^8.1.1"
+  }
+}
