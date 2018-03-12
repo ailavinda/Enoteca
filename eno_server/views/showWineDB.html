@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+
+<head>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+      <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
+
+    <script src="/js/jquery.js"></script>
+    <!-- <script src="/js/script.js"></script> -->
+
+    <title>Articles from DB</title>
+</head>
+
+<body>
+    <div class="main-cont-table">
+        <div class="menu-table-box">
+            <div class="logo">
+                <ul>
+                    <li>
+                        Logo
+                    </li>
+                </ul>
+                
+            </div>
+
+            <div class="menu">
+                <div class="about">
+                    <ul>
+                        <li>
+                            <a href="../about.html">About</a> 
+                        </li>
+                    </ul>
+                    
+                </div>
+                <div class="item_menu">
+                    <ul>
+                        <li>
+                            <a href="/artcls">All Articles</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+            </div>
+        </div>
+            
+        <div class="table_artcls">
+          <section>
+
+            <div class="art_table_contr">
+
+                <h1>Articles From DataBase</h1>
+
+                <!-- <div class="artcl_id">
+                    {{id}}
+                </div> -->
+
+             <!--    <div class="artcl_api_url">
+                    {{apiurl}}
+                </div> -->
+                
+                <div class="table_div">
+                    <table>
+                        <!-- <caption>Monthly savings</caption> -->
+
+                          <tr>
+                            <th>Go to Article</th>
+                            <th>Article ID</th>
+                            <th>Web ID</th>
+                            <th>Author</th> 
+                            <th>Web Date</th>
+                            <th>Short URL</th>
+                            <th>Article Trail</th>
+                          </tr>
+                          {{#artDBdt}}
+                          <tr>
+                            <td><<a href="/:{{artcl_id}}" title="">To Sinle Article</a></td>
+                            <td>{{artcl_id}}</td>
+                            <td>{{artcl_web_id}}</td>
+                            <td>{{artcl_author}}</td> 
+                            <td>{{artcl_web_date}}</td>
+                            <td><<a href="{{artcl_short_url}}">See on the Web</a></td>
+                            <td>{{artcl_trail}}</td>
+                          </tr>
+                          {{/artDBdt}}
+                    </table>
+                </div>
+
+            </div>
+          </section>
+        </div>
+
+        <div class="return-box-table">
+            <div class="back-to">
+                <ul>
+                    <li>
+                        <a href="/artcls">Back to search</a>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </div>   <!-- main-container -->
+</body>
+
+</html>

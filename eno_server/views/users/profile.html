@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+      <link href="/css/style.css" rel="stylesheet" type="text/css">
+      <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
+      <script src="/js/jquery.js"></script>
+      <!-- <script src="/js/script.js"></script> -->
+
+    <title>User Profile</title>
+    
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="menu-box">
+            <div class="logo">
+                <ul>
+                    <li>
+                        Enoteca
+                    </li>
+                </ul>
+                
+            </div>
+
+            <div class="menu">
+                <div class="about">
+                    <ul>
+                        <li>
+                            <a href="../about.html">About</a> 
+                        </li>
+                    </ul>
+                    
+                </div>
+                <div class="item_menu">
+                    <ul>
+                        <li>
+                            <a href="/wines/search">API Search</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+            </div>
+        </div>
+
+        <main>
+
+            <section>
+
+              <div class="login">
+        
+                <h1>Welcome to your profile</h1>
+                <br>
+
+                <div class="user_prof">
+                    <div class="email">
+                      <p>{{email}}</p> 
+                      <br> 
+                      <br>
+                    </div>
+                    <div class="counter">
+                        <form action="/users/counter" method="POST">
+                            <p id="user-data-counter">
+                            <br />
+                            <!-- {{counter}} -->
+                            </p>
+                            <br />
+                            <p>
+                                <br />
+                                <!-- <input type="submit" value="No-Counter"> -->
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="logout">
+                  <ul>
+                    <li>
+                        <a href="/users/logout">Logout</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+        </main>
+        <div class="return-box">
+            <div class="back-to">
+                <ul>
+                    <li>
+                        <a href="">Go back </a>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </div>   <!-- main-container -->
+</body>
+
+</html>
+
+

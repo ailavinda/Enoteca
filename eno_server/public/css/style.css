@@ -1,0 +1,380 @@
+@font-face {
+  font-family: SerifGothicStd-Bold;
+  src: url(../fonts/SerifGothicStd-Bold.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    display: flex;
+    position: relative;
+    top: 10px;
+    left: 20px;
+    /*width: 100%;*/
+    width: 900px;
+    height: 500px;
+    margin: 0 20px 0 20px;
+    color: #004d86;
+
+    /*#b3c8db;*/
+    /*#248f24;*/
+    background: #fff;
+    background-image: url('../images/wine-bottle-white-lemons-162691.jpeg');
+    background-repeat: no-repeat;
+    background-size: 926px 1414px;
+    padding: 7px;
+    border: 2px solid #77a7c9;
+    /*#004d86;*/
+    /*#248f24;*/
+    box-shadow: 2px 2px 2px #d6e2f5;
+
+}
+
+.main-cont-table {
+    display: flex;
+    position: relative;
+    top: 10px;
+    left: 20px;
+    /*width: 100%;*/
+    width: 1200px;
+    height: 100%;
+    margin: 0 20px 0 20px;
+    color: #004d86;
+    /*#b3c8db;*/
+    /*#248f24;*/
+    background: #fff;
+    padding: 7px;
+    border: 2px solid #77a7c9;
+    /*#004d86;*/
+    /*#248f24;*/
+    box-shadow: 2px 2px 2px #d6e2f5;
+
+}
+
+.menu-box {
+    position: absolute;
+    width: 98%;
+    top: 4px;
+    left: 4px;
+    height: 40px;
+    background: #fff;
+    padding: 4px;
+    border: 1px solid #77a7c9;
+    /*#004d86;*/
+    /*#248f24;*/
+    box-shadow: 1px 1px 1px #d6e2f5;
+
+}
+
+.menu-table-box {
+    position: absolute;
+    width: 98%;
+    top: 4px;
+    left: 4px;
+    height: 40px;
+    background: #fff;
+    padding: 4px;
+    border: 1px solid #77a7c9;
+    /*#004d86;*/
+    /*#248f24;*/
+    box-shadow: 1px 1px 1px #d6e2f5;
+
+}
+
+.return-box {
+    position: absolute;
+    width: 97.5%;
+    top: 90%;
+    left: 4px;
+    height: 40px;
+    background: #fff;
+    padding: 4px;
+    border: 1px solid #77a7c9;
+    /*#004d86;*/
+    /*#248f24;*/
+    box-shadow: 1px 1px 1px #d6e2f5;
+
+}
+
+.return-box-table {
+    position: fixed;
+    width: 15%;
+    top: 92%;
+    left: 4px;
+    height: 30px;
+    background: #fff;
+    padding: 4px;
+    border: 1px solid #77a7c9;
+    /*#004d86;*/
+    /*#248f24;*/
+    box-shadow: 1px 1px 1px #d6e2f5;
+
+}
+
+.logo {
+    position: absolute;
+    left: 10px;
+    top: 1px;
+    max-width: 75px;
+    height: 40px;
+    text-align: center;
+    font-family: 'Tangerine', serif;
+    color: #0000ff;
+    font-size: 40px;
+    padding: 2px 0 0 0;
+    margin: 0 0 2px 0;
+    text-shadow: 2px 2px 2px #aaa;
+
+} 
+
+.logo ul li {
+    margin: 0;
+}
+
+.back-to {
+    position: absolute;
+    left: 10px;
+    bottom: 0px;
+    max-width: 100px;
+    height: 40px;
+    text-align: center;
+
+}
+
+.menu {
+    position: absolute;
+    right: 10px;
+    top: 1px;
+    min-width: 200px;
+    height: 40px;
+    text-align: center;
+}
+
+.about {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    max-width: 60px;
+    text-align: center;
+
+}
+
+.item_menu {
+    position: absolute;
+    right: 75px;
+    top: 1px;
+    max-width: 120px;
+    text-align: center;
+
+}
+
+main {
+    position: absolute;
+    top: 30%;
+    left: 22%;
+    width: 500px;
+    height: 230px;
+    margin: 0 auto;
+    color: #b3c8db;
+    background: #fff;
+    padding: 7px;
+    border: 2px solid #77a7c9;
+    box-shadow: 2px 2px 2px #d6e2f5;
+}
+
+.table_wines {
+    position: absolute;
+    top: 100px;
+    left: 5%;
+
+    width: 85%;
+    /*height: 100hv;*/
+
+    /*width: 500px;
+    height: 230px;*/
+    margin: 0 auto;
+    color: #b3c8db;
+    background: #fff;
+    padding: 7px;
+    border: 2px solid #77a7c9;
+    box-shadow: 2px 2px 2px #d6e2f5;
+}
+
+table {
+    width:100%;
+}
+
+.border-container {
+    
+    border: 2px dotted #248f24;
+    border-color: #248f24;
+    font-size: 16px;
+    font-family: SerifGothicStd-Bold, sans-serif;
+    font-style: italic;
+    text-align: left;
+}
+
+h1 {
+    top: 10px;
+    left: 20px;
+    font-family: 'Berkshire Swash', serif;
+    color: #004d86;
+    /*#248f24;*/
+    /*color: #0000ff;*/
+    /*text-align: left;*/
+    font-size: 30px;
+    padding: 21px 0 0 0;
+    margin: 0 0 21px 0;
+    text-shadow: 2px 2px 2px #d6e2f5;
+
+    /*#ccffdd;*/
+    /*#122749;*/
+    /*#1b3560;*/
+
+    text-align: center;
+}
+
+.login {
+
+    max-width: 500px;
+    font-family: 'Berkshire Swash', serif;
+    color: #004d86;
+    font-size: 16px;
+
+}
+
+.wine_srch_contr {
+
+    max-width: 500px;
+    font-family: 'Berkshire Swash', serif;
+    color: #004d86;
+    font-size: 16px;
+
+}
+
+.wine_srch_contr p {
+
+    text-align: center;
+}
+
+.wine_table_contr {
+
+    max-width: 1200px;
+    font-family: 'Berkshire Swash', serif;
+    color: #004d86;
+    font-size: 16px;
+
+}
+
+.reg_user, .new_user, .email, .counter, .srch_prm {
+    display: flex;
+    justify-content: center;
+
+}
+
+.counter p {
+    text-align: center;
+}
+
+input {
+    font-size: 16px;
+}
+
+.divider { 
+    display: inline-flex;
+    margin: 0 auto;
+}
+
+.separator {
+    height: 60px;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto;
+    color: #248f24;
+}
+
+.create_link {
+    height: 60px;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto;
+    color: #248f24;
+
+}
+
+.left {
+    flex-flow: row;
+    align-content: space-around;
+    max-width: 400px;
+
+}
+
+.right {
+    flex-flow: row;
+    align-content: space-around;
+}
+
+.top {
+    text-align: center;
+    margin-left: 200px;
+    min-width: 300px;
+    /*flex-flow: column;*/
+    /*align-self: center;*/
+    /*align-items: : center;*/
+}
+
+.bottom {
+    /*flex-flow: column;*/
+    /*align-content: : center;*/
+    /*flex-direction: column;*/
+    justify-content: center;
+    /*align-items: center;*/
+    min-width: 300px;
+    margin-left: 200px;
+}
+
+ul {
+    list-style-type: none;
+    /*margin: 0 0 40px 70px;*/
+    /*width: 593px;*/
+}
+
+ul li {
+    margin: 12px 0;
+}
+
+ul li span.title {
+    /*display: inline-block;*/
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: SerifGothicStd-Bold, sans-serif;
+    margin-right: 20px;
+    color: #248f24;
+}
+
+.description {
+    margin: 0 auto;
+    text-align: center;
+    font-family: SerifGothicStd-Bold, sans-serif;
+    font-style: italic;
+
+    text-transform: none;
+    color: #248f24;
+    /*#6f7273;*/
+    font-size: 16pt;
+    margin: 16px auto;
+}
+
+ul li span.description {
+    text-align: left;
+    font-size: 15px;
+    margin: 12px 0;
+}
+
+.home-link {
+  text-align: center;
+  margin: 20pt auto;
+}

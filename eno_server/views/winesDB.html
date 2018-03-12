@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+<head>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+      <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
+
+    <script src="/js/jquery.js"></script>
+    <!-- <script src="/js/script.js"></script> -->
+
+    <title>Wines from DB</title>
+</head>
+
+<body>
+    <div class="main-cont-table">
+        <div class="menu-table-box">
+            <div class="logo">
+                <ul>
+                    <li>
+                        Enoteca
+                    </li>
+                </ul>
+                
+            </div>
+
+            <div class="menu">
+                <div class="about">
+                    <ul>
+                        <li>
+                            <a href="../about.html">About</a> 
+                        </li>
+                    </ul>
+                    
+                </div>
+                <div class="item_menu">
+                    <ul>
+                        <li>
+                            <a href="/wines">All Wines</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+            </div>
+        </div>
+            
+        <div class="table_wines">
+          <section>
+
+            <div class="wine_table_contr">
+
+                <h1>Wines saved to DB</h1>
+                
+                <div class="table_div">
+                    <table>
+
+                          <tr>
+                            <th>Go to Wine</th>
+                            <th>Wine Name</th>
+                            <th>Wine Origin</th>
+                            <th>Released On</th> 
+                            <th>Thumb</th>
+                            <th>Price</th>
+                            
+                          </tr>
+                          {{#winesDB}}
+                          <tr>
+                            <td><<a href="/:{{wineId}}" title="">Look up</a></td>
+                            <td>{{prdct_name}}</td>
+                            <td>{{origin}}</td>
+                            <td>{{released_on}}</td> 
+                            <td>{{image_thumb_url}}</td>
+                            <td>{{reg_price_cc}}</td>
+                            <td><<a href="{{image_url}}">See it on the Web</a></td>
+                            
+                          </tr>
+                          {{/winesDB}}
+                    </table>
+                </div>
+
+            </div>
+          </section>
+        </div>
+
+        <div class="return-box-table">
+            <div class="back-to">
+                <ul>
+                    <li>
+                        <a href="/search">Back to search</a>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </div>   <!-- main-container -->
+</body>
+
+</html>

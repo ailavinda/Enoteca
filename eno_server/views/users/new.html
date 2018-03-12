@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
+  <script src="/js/jquery.js"></script>
+  <!-- <script src="/js/script.js"></script> -->
+  <title>Sign Up</title>
+  
+</head>
+<body>
+      <div class="main-container">
+        <div class="menu-box">
+            <div class="logo">
+                <ul>
+                    <li>
+                        Enoteca
+                    </li>
+                </ul>
+                
+            </div>
+
+            <div class="menu">
+                <div class="about">
+                    <ul>
+                        <li>
+                            About
+                        </li>
+                    </ul>
+                    
+                </div>
+                <div class="item_menu">
+                    <ul>
+                        <li>
+                            Next Item
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+            </div>
+        </div>
+          <main>
+            <section>
+      
+              <div class="login">
+
+                <h1>Sign Up</h1>
+
+                <div class="reg_user">
+                  <form action="/users" method="POST">
+                    <label for="email">Email</label><br>
+                    <input id="email" type="text" name="user[email]" placeholder="john.doe@example.com"><br>
+                    <label for="password">Password</label><br>
+                    <input id="password" type="password" name="user[password]" placeholder="P4ssw0rd1234"><br>
+                    <input type="submit" value="Sign Up">
+                  </form>
+                </div>
+              </div>
+            </section>
+          </main>
+          <div class="return-box">
+            <div class="back-to">
+                <ul>
+                    <li>
+                        <a href="">Go back </a>
+                    </li>
+                </ul>  
+            </div>
+          </div>
+    </div>   <!-- main-container -->
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+<head>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+      <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'>
+      <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poller+One" rel="stylesheet">
+
+    <script src="/js/jquery.js"></script>
+    <!-- <script src="/js/script.js"></script> -->
+
+    <title>LCBO API Search For Wines</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="menu-box">
+            <div class="logo">
+                <ul>
+                    <li>
+                        Enoteca
+                    </li>
+                </ul>
+                
+            </div>
+
+            <div class="menu">
+                <div class="about">
+                    <ul>
+                        <li>
+                            <a href="../about.html">About</a> 
+                        </li>
+                    </ul>
+                    
+                </div>
+                <div class="item_menu">
+                    <ul>
+                        <li>
+                            <a href="/winesDB">All from DB</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+            </div>
+        </div>
+            
+        <main>
+          <section>
+
+            <div class="wine_srch_contr">
+
+                <h1>API Wines Search</h1>
+
+<!--                 <div class="wine_id">
+                    {{id}}
+                </div>
+
+                <div class="wine_api_url">
+                    {{apiurl}}
+                </div> -->
+                
+                <div class="srch_prm">
+                    <form action="/wines" method="POST" id="add_wine_srch">
+                        <p>
+                            <label for="srch_prm">Enter white/red for wines at LCBO API</label>
+                            <br />
+                            <input id="srch_prm" type="text" name="param_srch">
+                            <!-- value="white wine" -->
+                            <br />
+                            <br />
+                            <label for="srch_prm">Enter country origin of wines</label>
+                            <br />
+                            <input id="srch_prm" type="text" name="country_srch">
+                            <!-- value="New Zealand" -->
+                        </p>
+                        <p>
+                        <!-- <textarea name="comment" cols="30" rows="10"></textarea> -->
+                <!-- We can use a "hidden" input to serialize additional data
+                that will be useful in our post, such as the name of the wine. Check out script.js to see how we use this. -->
+                <!-- hidden is available to GET method of form -->
+                        <!-- <input type="hidden" name="wineName" value="{{name}}">
+                        <br>
+                        </p> -->
+                        <br>
+                        <p>
+                            <input type="submit" value="Search">
+                        </p>
+                    </form>
+                </div>
+    <!--             <div class="search_artcls">
+                    <p>
+                        <a href="/artcls/search">Search All Articles</a>
+                    </p>
+                </div> -->
+    <!--             <div class="to_profile">
+                    <p>
+                        <a href="/users/profile">User Profile</a>
+                    </p>
+                </div> -->
+            </div>
+          </section>
+        </main>
+
+        <div class="return-box">
+            <div class="back-to">
+                <ul>
+                    <li>
+                        <a href="/users/profile">Back to profile</a>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </div>   <!-- main-container -->
+</body>
+
+</html>
