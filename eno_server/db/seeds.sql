@@ -60,7 +60,12 @@ VALUES
 
 RETURNING id;
 
-  
+INSERT INTO wine_product (prdct_name, category, style, origin, package, released_on, description, tasting_note, image_thumb_url, image_url, varietal, sugar_grm_ltr, reg_price_cc, alcohol_cntnt, sugar_cntnt, producer_name)
+VALUES 
+
+('Stoneleigh Marlborough Sauvignon Blanc','White Wine','Aromatic & Flavourful','New Zealand, Region Not Specified','750 mL bottle','2016-11-18','Looking for something to please everyone? This famed New Zealand white has classic Sauvignon Blanc flavours of gooseberry, herbs and tropical fruit. It''s excellent with our scallops and chorizo bites.','Looking for something to please everyone? This famed New Zealand white has classic Sauvignon Blanc flavours of gooseberry, herbs and tropical fruit. It''s excellent with our scallops and chorizo bites.','https://dx5vpyka4lqst.cloudfront.net/products/293043/images/thumb.png','https://dx5vpyka4lqst.cloudfront.net/products/293043/images/full.jpeg','Sauvignon Blanc','5','1795','1300','XD - Extra Dry','Pernod Ricard Pacific Pty Ltd')
+
+RETURNING id;
 
 
 

@@ -65,17 +65,17 @@
                             <th>Released On</th> 
                             <th>Thumb</th>
                             <th>Price</th>
-                            
+                            <th>Web Image</th>
                           </tr>
                           {{#winesDB}}
                           <tr>
-                            <td><<a href="/:{{wineId}}" title="">Look up</a></td>
+                            <td><a href="/wines/:{{id}}" title="record_id_{{id}}">Look up</a></td>
                             <td>{{prdct_name}}</td>
                             <td>{{origin}}</td>
                             <td>{{released_on}}</td> 
-                            <td>{{image_thumb_url}}</td>
+                            <td><img src="{{image_thumb_url}}" alt="thumb" width="59.75" height="79.75" /></td>
                             <td>{{reg_price_cc}}</td>
-                            <td><<a href="{{image_url}}">See it on the Web</a></td>
+                            <td><a href="{{image_url}}" title="web_image" >See it on the Web</a></td>
                             
                           </tr>
                           {{/winesDB}}
@@ -90,7 +90,9 @@
             <div class="back-to">
                 <ul>
                     <li>
-                        <a href="/search">Back to search</a>
+                        <a href="/wines/search">Back to search</a>
+                        <!-- This will present "Enter search parameters page" -->
+                        <!-- <a href="/wines/search">Back to search</a> -->
                     </li>
                 </ul>  
             </div>

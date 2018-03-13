@@ -78,13 +78,13 @@ router.post(
 //                                                       //
 ///////////////////////////////////////////////////////////
 
+// Just fetching everything from DB...
 router.get(
-    '/',
-    // ...should not be '/wines', as it already defined in index.js... 
+    '/searchDB',
     // auth.restrict, 
     winesMdl.allDBwines, (req, res, next) => {
-    console.log('In GET / router (= /wines), controllers/wines.js');
-    // Just fetching everything from DB...
+    console.log('In GET /searchDB router (= /wines/searchDB), controllers/wines.js');
+    
     res.render('winesDB');
 });
 
@@ -104,17 +104,30 @@ router.get(
 router.get(
     '/create', 
     winesMdl.create_get, (req, res, next) => {
-    // res.send(`In the GET for create new...${req.params.artclId}`)
-    // res.render('create', res.locals.newArtclId);
+    // res.send(`In the GET for create new...${req.params.wineId}`)
+    // res.render('create', res.locals.newWineId);
     res.render('create');
 });
 
 router.post(
     '/create', 
     winesMdl.create_post, (req, res, next) => {
-    // res.send(req.params.artclId);
-    res.render('wines', res.locals.newWineId);
-    
+    // res.send(req.params.wineId);
+
+    // If user is in API search and marked a record for
+    // saving to DB we want them to remain on the same 
+    // page without refreshing, and be able to save again...
+    // Some "alert" action with returned record id?
+    // On the other hand, if DB is populated manually, the
+    // usual action would be refresh the page with all the
+    // wines from DB to show new addition...
+
+    // Not defined!
+    // alert(`Record saved, id: \n ${res.locals.newWineId}`);
+    // sic!
+
+    // res.render('wines', res.locals.newWineId);
+    res.redirect('/wines/searchDB');
     // res.json has been tested and worked okay:
     
 });
@@ -144,9 +157,9 @@ router.delete(
 
 
 
-// Commenting below for now, as it is unclear
-// that "GET" by name in /wines/:wineName...
-// is for user_wine_comments model...
+// Commenting below for now, as it cleary
+// shoud be in the user_wine_comments model,
+// "GET" by name in /wines/:wineName...
 
 // router.get(
 //     '/:wineName',

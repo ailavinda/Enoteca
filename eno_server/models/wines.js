@@ -212,11 +212,11 @@ function sortThroughWine(arrData) {
 }
 
 
-// The special route is /wines/search allows user 
+// The special route /wines/search allows user 
 // to enter search parameters, fetch data from API
 // and then mark some of them to be saved into DB...
 winesMdl.allWines = (req, res, next) => {
-  // Replacing access to DB with axios call to
+  // This is an initial use of axios call to
   // LCBO API...
 
   console.log("In winesMdl.allWines... models/wines");
@@ -226,12 +226,14 @@ winesMdl.allWines = (req, res, next) => {
   var prm_srch;
   var cntr_srch;
   // The search parameters is for "wine" and its color...
+  // The LCBO API provides info about all kind of bevergages,
+  // so, there is a need for filtering for "wines"...
   if (req.body.param_srch) {
     prm_srch = req.body.param_srch.trim().replace(" ", "+");
   } else {
     prm_srch = `white+wine`;
   }
-  // Need second input field for country of origin,
+  // Need a second input field for country of origin,
   // like "New Zealand"...
   if (req.body.country_srch) {
     cntr_srch = req.body.country_srch.trim();
@@ -240,28 +242,28 @@ winesMdl.allWines = (req, res, next) => {
     cntr_srch = `New Zealand`;
   }
 
-
-  // console.log("This is req.body.param_srch: ", prm_srch);
-
   // The API url...
   var urlLCBO = "http://lcboapi.com/products?";
 
-  // This goes right after "products?"...
+  // The number of recordes per hit goes right after
+  // "products?"...
   const pageSz = "per_page=100&";
 
-  // This is next, user's input like "white+wine"...
+  // This is next, user's "query" input like "white+wine"...
   var queryLn = `q=${prm_srch}`;
 
-  // Next is apiKey (&access_key=)...
+  // Next is apiKey (&access_key=), see above,
+  // around line 68...
 
-  // Cerrent page is the last in the URL string.
-  // API provides info for current page, next 
-  // page, total pages, and, actually, gives 
+  // Current page is the last in the URL string.
+  // API provides info for "current page", "next 
+  // page", "total pages", and, actually, gives 
   // entire URL string for the next page except
   // urlLCBO...
   const pageCurr = "&page=";
 
-  // We want to be able incrementing the page...
+  // We want to be able incrementing the page,
+  // just in case...
   var pgNum = 1;
   var pgCrr = pageCurr + pgNum;
 
@@ -270,8 +272,6 @@ winesMdl.allWines = (req, res, next) => {
     url: `${urlLCBO}${pageSz}${queryLn}${apiKey}${pgCrr}`
   })
     .then(respns => {
-      
-      // console.log("First query results: ", respns);
 
       // Here comes the first page of data...
       var winesRes = respns.data;
@@ -282,9 +282,19 @@ winesMdl.allWines = (req, res, next) => {
       var nxtPage = objPager.next_page;
       var nxtUrl = objPager.next_page_path;
 
-      // ...and "result" array...
+      // ...and the "result" array...
       var arrReslt = winesRes.result;
-      // This array used to filter by "country"...
+      // Later on we are going to passw this array
+      // sortThroughWines function, so below code
+      // lines would be moved into the funcion.
+      // This will make it possible to make several
+      // axios calls witnin the function...
+      // The old function is an example of making 
+      // .all promises pushed into an array, but 
+      // this is not our intention and goes beyond
+      // MVP...
+
+      // This array is used to filter by "country"...
       var arrCntrRslt = [];
       var aCnRs = [];
       var arrItem = {};
@@ -294,54 +304,54 @@ winesMdl.allWines = (req, res, next) => {
 
         if (arrReslt[i].origin.indexOf(cntr_srch) !== -1) {
           console.log("Found New Zealand: ", {name: `${arrReslt[i].name}`});
-
-          arrItem.name = arrReslt[i].name;
-          aIt.name = arrReslt[i].name;
-          console.log("This is Name: ", JSON.stringify(aIt));
-          console.log("This is Name: ", aIt);
+          // Collecting dual-sets of data:
+          // One - to be ready for insertion into DB;
+          // Another - for user to see and mark them
+          // for insertion...
+          arrItem.name = arrReslt[i].name.replace("'", "''", 'g');
+          aIt.name = arrReslt[i].name.replace("'", "''", 'g');
           
-          arrItem.regular_price_in_cents = arrReslt[i].regular_price_in_cents;
+          arrItem.regular_price_in_cents = '' + arrReslt[i].regular_price_in_cents;
           arrItem.secondary_category = arrReslt[i].secondary_category;
-          arrItem.origin = arrReslt[i].origin;
-          aIt.origin = arrReslt[i].origin;
-          console.log("This is object with two pairs: ", JSON.stringify(aIt));
-          arrItem.package = arrReslt[i].package;
-          arrItem.alcohol_content = arrReslt[i].alcohol_content;
+          arrItem.origin = arrReslt[i].origin.replace("'", "''", 'g');
+          aIt.origin = arrReslt[i].origin.replace("'", "''", 'g');
+          
+          arrItem.package = arrReslt[i].package.replace("'", "''", 'g');
+          arrItem.alcohol_content = '' + arrReslt[i].alcohol_content;
           arrItem.sugar_content = arrReslt[i].sugar_content;
-          arrItem.producer_name = arrReslt[i].producer_name;
+          arrItem.producer_name = arrReslt[i].producer_name.replace("'", "''", 'g');
           arrItem.released_on = arrReslt[i].released_on;
           aIt.released_on = arrReslt[i].released_on;
-          console.log("This is objec with tree pairs: ", JSON.stringify(aIt));
-          arrItem.description = arrReslt[i].description;
-          arrItem.serving_suggestion = arrReslt[i].serving_suggestion;
-          arrItem.tasting_note = arrReslt[i].tasting_note;
+          
+          arrItem.description = arrReslt[i].description === null ? "" : arrReslt[i].description.replace("'", "''", 'g');
+          // arrItem.serving_suggestion = arrReslt[i].serving_suggestion;
+          arrItem.tasting_note = arrReslt[i].tasting_note.replace("'", "''", 'g');
           arrItem.image_thumb_url = arrReslt[i].image_thumb_url;
           aIt.image_thumb_url = arrReslt[i].image_thumb_url;
-          aIt.regular_price_in_cents = arrReslt[i].regular_price_in_cents;
-          console.log("This is objec with five pairs: ", JSON.stringify(aIt));
+          aIt.regular_price_in_cents = '' + arrReslt[i].regular_price_in_cents;
+          
           arrItem.image_url = arrReslt[i].image_url;
           aIt.image_url = arrReslt[i].image_url;
-          console.log("This is objects with six pairs: ", JSON.stringify(aIt));
-          arrItem.varietal = arrReslt[i].varietal;
-          arrItem.style = arrReslt[i].style;
-          arrItem.sugar_in_grams_per_liter = arrReslt[i].sugar_in_grams_per_liter;
+          
+          arrItem.varietal = arrReslt[i].varietal.replace("'", "''", 'g');
+          arrItem.style = arrReslt[i].style.replace("'", "''", 'g');
+          arrItem.sugar_in_grams_per_liter = '' + arrReslt[i].sugar_in_grams_per_liter;
           
           arrCntrRslt.push(arrItem);
           aCnRs.push(aIt);
-          console.log("name: ", JSON.stringify(aIt.name));
-          console.log("array of objects: ", JSON.stringify(aCnRs));
+          // console.log("name: ", JSON.stringify(aIt.name));
+          // console.log("array of objects: ", JSON.stringify(aCnRs));
           arrItem = {};
           aIt = {};
         }
 
       }
-      res.locals.wnsAPIdt = aCnRs;
+      res.locals.wnsAPIdt = arrCntrRslt;
       console.log(res.locals.wnsAPIdt);
-      // res.locals.wnsAPIdt = aCnRs[0];
-      // console.log(res.locals.wnsAPIdt);
+      // 
       // Calling a function to fetch additional data...
-      // res.locals.allWinesData = sortThroughWine(arrReslt);
-      // console.log(JSON.stringify(res.locals.allWinesData));
+      // res.locals.wnsAPIdt = sortThroughWine(arrReslt);
+      // console.log(JSON.stringify(res.locals.wnsAPIdt));
 
       next();
     })
@@ -403,31 +413,38 @@ winesMdl.create_get = (req, res, next) => {
 
 // Then, create new a record using POST...
 winesMdl.create_post = (req, res, next) => {
+          // eno_user_id,
+        // region_id,
+        // producer_id,
   db
     .one(
-      "INSERT INTO wine_product (eno_user_id, region_id, producer_id, prdct_name, category, stye, origin, package_unit, released_on, description, testing_note, image_thumb_url, image_url, varietal_grape, sugar_grm_ltr, reg_price_cc) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING id;",
+      "INSERT INTO wine_product (prdct_name, category, style, origin, package, released_on, description, tasting_note, image_thumb_url, image_url, varietal, sugar_grm_ltr, reg_price_cc, alcohol_cntnt, sugar_cntnt, producer_name) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING id;",
       [
-        eno_user_id,
-        region_id,
-        producer_id,
-        prdct_name,
-        category,
-        stye,
-        origin,
-        package_unit,
-        released_on,
-        description,
-        testing_note,
-        image_thumb_url,
-        image_url,
-        varietal_grape,
-        sugar_grm_ltr,
-        reg_price_cc
+        req.body.name,
+        req.body.seondary_category,
+        req.body.style,
+        req.body.origin,
+        req.body.package,
+        req.body.released_on,
+        req.body.description,
+        req.body.tasting_note,
+        req.body.image_thumb_url,
+        req.body.image_url,
+        req.body.varietal,
+        req.body.sugar_in_grams_per_liter,
+        req.body.regular_price_in_cents,
+        req.body.alcohol_content,
+        req.body.sugar_content,
+        req.body.producer_name
+        
       ]
     )
     .then(data => {
       res.locals.newWineId = data.id;
       console.log(res.locals.newWineId);
+      // Not defined!
+      // alert(`Record saved, id: ${res.locals.newWineId}`)
+      // sic!
       next();
     })
     .catch(error => {
@@ -442,26 +459,30 @@ winesMdl.create_post = (req, res, next) => {
 //  from /wines/:wineId PUT...                       //
 ///////////////////////////////////////////////////////
 winesMdl.update = (req, res, next) => {
+  console.log("Record :winId = ", req.params.wineId)
   db
     .one(
-      "UPDATE wine_product SET eno_user_id = $1, region_id = $2, producer_id = $3, prdct_name = $4, category = $5, stye = $6, origin = $7, package_unit = $8, released_on = $9, description = $10, testing_note = $11, image_thumb_url = $12, image_url = $13, varietal_grape = $14, sugar_grm_ltr = $15, reg_price_cc = $16 WHERE wine_product.id = $17 RETURNING *;",
+      "UPDATE wine_product SET prdct_name = $1, category = $2, style = $3, origin = $4, package = $5, released_on = $6, description = $7, testing_note = $8, image_thumb_url = $9, image_url = $10, varietal = $11, sugar_grm_ltr = $12, reg_price_cc = $13, alcohol_cntnt = $14, sugar_cntnt = $15, producer_name = $17 WHERE wine_product.id = $17 RETURNING *;",
       [
-        req.body.eno_user_id,
-        req.body.region_id,
-        req.body.producer_id,
-        req.body.prdct_name,
-        req.body.category,
-        req.body.stye,
+        // req.body.eno_user_id,
+        // req.body.region_id,
+        // req.body.producer_id,
+        req.body.name,
+        req.body.seondary_category,
+        req.body.style,
         req.body.origin,
-        req.body.package_unit,
+        req.body.package,
         req.body.released_on,
         req.body.description,
-        req.body.testing_note,
+        req.body.tasting_note,
         req.body.image_thumb_url,
         req.body.image_url,
-        req.body.varietal_grape,
-        req.body.sugar_grm_ltr,
-        req.body.reg_price_cc,
+        req.body.varietal,
+        req.body.sugar_in_grams_per_liter,
+        req.body.regular_price_in_cents,
+        req.body.alcohol_content,
+        req.body.sugar_content,
+        req.body.producer_name,
 
         req.params.wineId
       ]

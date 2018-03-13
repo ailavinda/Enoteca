@@ -262,7 +262,63 @@ INSERT 0 3
 ool-ad0200c8:eno_server ailavinda$ 
 
 
+-- Modification of wine_product table on Mar 12...
 
 
+enoteca_db=# 
+
+enoteca_db=# 
+enoteca_db=# 
+enoteca_db=# DROP TABLE IF EXISTS wine_product CASCADE;
+DROP TABLE
+enoteca_db=# 
+enoteca_db=# CREATE TABLE wine_product (
+enoteca_db(#   id              BIGSERIAL     PRIMARY KEY,
+enoteca_db(#   -- eno_user_id     BIGINT        REFERENCES eno_user (id),
+enoteca_db(#   -- region_id       BIGINT        REFERENCES wine_region_ref (id),
+enoteca_db(#   -- producer_id     BIGINT        REFERENCES wine_producer_ref (id),
+enoteca_db(#   producer_name   VARCHAR(255),
+enoteca_db(#   prdct_name      VARCHAR(255)  NOT NULL UNIQUE,
+enoteca_db(#   category        VARCHAR(31),
+enoteca_db(#   style           VARCHAR(31),
+enoteca_db(#   origin          VARCHAR(255),
+enoteca_db(#   package         VARCHAR(31),
+enoteca_db(#   released_on     VARCHAR(31),
+enoteca_db(#   description     VARCHAR(511),
+enoteca_db(#   tasting_note    VARCHAR(511),
+enoteca_db(#   image_thumb_url VARCHAR(511),
+enoteca_db(#   image_url       VARCHAR(511),
+enoteca_db(#   varietal        VARCHAR(255),
+enoteca_db(#   sugar_grm_ltr   VARCHAR(16),
+enoteca_db(#   sugar_cntnt     VARCHAR(31),
+enoteca_db(#   alcohol_cntnt   VARCHAR(16),
+enoteca_db(#   reg_price_cc    VARCHAR(16),
+enoteca_db(#   record_stamp    TIMESTAMP     DEFAULT CURRENT_TIMESTAMP
+enoteca_db(# );
+CREATE TABLE
+enoteca_db=#                                           
+
+
+
+enoteca_db=# 
+enoteca_db=# INSERT INTO wine_product (prdct_name, category, style, origin, package, released_on, description, tasting_note, image_thumb_url, image_url, varietal, sugar_grm_ltr, reg_price_cc, alcohol_cntnt, sugar_cntnt, producer_name)
+enoteca_db-# VALUES 
+enoteca_db-# 
+enoteca_db-# ('Stoneleigh Marlborough Sauvignon Blanc','White Wine','Aromatic & Flavourful','New Zealand, Region Not Specified','750 mL bottle','2016-11-18','Looking for something to please everyone? This famed New Zealand white has classic Sauvignon Blanc flavours of gooseberry, herbs and tropical fruit. It''s excellent with our scallops and chorizo bites.','Looking for something to please everyone? This famed New Zealand white has classic Sauvignon Blanc flavours of gooseberry, herbs and tropical fruit. It''s excellent with our scallops and chorizo bites.','https://dx5vpyka4lqst.cloudfront.net/products/293043/images/thumb.png','https://dx5vpyka4lqst.cloudfront.net/products/293043/images/full.jpeg','Sauvignon Blanc','5','XD - Extra Dry','1300','1795','Pernod Ricard Pacific Pty Ltd')
+enoteca_db-# 
+enoteca_db-# RETURNING id;
+ id 
+----
+  1
+(1 row)
+
+INSERT 0 1
+enoteca_db=# SELECT * FROM wine_product;
+ id |         producer_name         |               prdct_name               |  category  |         style         |              origin               |    package    | released_on |                                                                                               description                                                                                                |                                                                                               tasting_note                                                                                               |                            image_thumb_url                            |                               image_url                               |    varietal     | sugar_grm_ltr | sugar_cntnt | alcohol_cntnt |  reg_price_cc  |        record_stamp        
+----+-------------------------------+----------------------------------------+------------+-----------------------+-----------------------------------+---------------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------+-----------------+---------------+-------------+---------------+----------------+----------------------------
+  1 | Pernod Ricard Pacific Pty Ltd | Stoneleigh Marlborough Sauvignon Blanc | White Wine | Aromatic & Flavourful | New Zealand, Region Not Specified | 750 mL bottle | 2016-11-18  | Looking for something to please everyone? This famed New Zealand white has classic Sauvignon Blanc flavours of gooseberry, herbs and tropical fruit. It's excellent with our scallops and chorizo bites. | Looking for something to please everyone? This famed New Zealand white has classic Sauvignon Blanc flavours of gooseberry, herbs and tropical fruit. It's excellent with our scallops and chorizo bites. | https://dx5vpyka4lqst.cloudfront.net/products/293043/images/thumb.png | https://dx5vpyka4lqst.cloudfront.net/products/293043/images/full.jpeg | Sauvignon Blanc | 5             | 1795        | 1300          | XD - Extra Dry | 2018-03-13 01:30:33.953831
+(1 row)
+
+enoteca_db=# 
 
 
