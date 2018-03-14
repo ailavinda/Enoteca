@@ -319,13 +319,13 @@ winesMdl.allWines = (req, res, next) => {
           arrItem.package = arrReslt[i].package.replace("'", "''", 'g');
           arrItem.alcohol_content = '' + arrReslt[i].alcohol_content;
           arrItem.sugar_content = arrReslt[i].sugar_content;
-          arrItem.producer_name = arrReslt[i].producer_name.replace("'", "''", 'g');
+          arrItem.producer_name = arrReslt[i].producer_name === null ? null : arrReslt[i].producer_name.replace("'", "''", 'g');
           arrItem.released_on = arrReslt[i].released_on;
           aIt.released_on = arrReslt[i].released_on;
           
-          arrItem.description = arrReslt[i].description === null ? "" : arrReslt[i].description.replace("'", "''", 'g');
+          arrItem.description = arrReslt[i].description === null ? null : arrReslt[i].description.replace("'", "''", 'g');
           // arrItem.serving_suggestion = arrReslt[i].serving_suggestion;
-          arrItem.tasting_note = arrReslt[i].tasting_note.replace("'", "''", 'g');
+          arrItem.tasting_note = arrReslt[i].tasting_note === null ? null : arrReslt[i].tasting_note.replace("'", "''", 'g');
           arrItem.image_thumb_url = arrReslt[i].image_thumb_url;
           aIt.image_thumb_url = arrReslt[i].image_thumb_url;
           aIt.regular_price_in_cents = '' + arrReslt[i].regular_price_in_cents;
@@ -385,14 +385,14 @@ winesMdl.allDBwines = (req, res, next) => {
 ///////////////////////////////////////////////////////
 winesMdl.findById = (req, res, next) => {
   // .wineId is provided by HTML route...
-  const id = req.params.wineId;
+  const id = req.params.id;
   console.log(id);
-  console.log(JSON.stringify(req.params.wineId));
+  // console.log(JSON.stringify(req.params.wineId));
   db
-    .one("SELECT * FROM wine_product WHERE wine_product.id = ${id}", { id: id })
+    .one("SELECT * FROM wine_product WHERE id = ${id}", { id: id })
     .then(data => {
-      res.locals.wineData = data;
-      console.log(res.locals.wineData);
+      res.locals.wineIdData = data;
+      console.log(res.locals.wineIdData);
       next();
     })
     .catch(error => {
@@ -459,16 +459,18 @@ winesMdl.create_post = (req, res, next) => {
 //  from /wines/:wineId PUT...                       //
 ///////////////////////////////////////////////////////
 winesMdl.update = (req, res, next) => {
-  console.log("Record :winId = ", req.params.wineId)
-  db
-    .one(
-      "UPDATE wine_product SET prdct_name = $1, category = $2, style = $3, origin = $4, package = $5, released_on = $6, description = $7, testing_note = $8, image_thumb_url = $9, image_url = $10, varietal = $11, sugar_grm_ltr = $12, reg_price_cc = $13, alcohol_cntnt = $14, sugar_cntnt = $15, producer_name = $17 WHERE wine_product.id = $17 RETURNING *;",
-      [
-        // req.body.eno_user_id,
+  console.log("Record :id = ", req.params.id)
+  const id = Number(req.params.id);
+  // req.body.eno_user_id,
         // req.body.region_id,
         // req.body.producer_id,
-        req.body.name,
-        req.body.seondary_category,
+  db
+    .one(
+      "UPDATE wine_product SET producer_name = $1, prdct_name = $2, category = $3, style = $4, origin = $5, package = $6, released_on = $7, description = $8, tasting_note = $9, image_thumb_url = $10, image_url = $11, varietal = $12, sugar_grm_ltr = $13, sugar_cntnt = $14, alcohol_cntnt = $15, reg_price_cc = $16 WHERE id = $17 RETURNING * ;",
+      [
+        req.body.producer_name,
+        req.body.prdct_name,
+        req.body.category,
         req.body.style,
         req.body.origin,
         req.body.package,
@@ -478,13 +480,12 @@ winesMdl.update = (req, res, next) => {
         req.body.image_thumb_url,
         req.body.image_url,
         req.body.varietal,
-        req.body.sugar_in_grams_per_liter,
-        req.body.regular_price_in_cents,
-        req.body.alcohol_content,
-        req.body.sugar_content,
-        req.body.producer_name,
-
-        req.params.wineId
+        req.body.sugar_grm_ltr,
+        req.body.sugar_cntnt,
+        req.body.alcohol_cntnt,
+        req.body.reg_price_cc,
+        id
+        
       ]
     )
     .then(data => {

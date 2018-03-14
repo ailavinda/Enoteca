@@ -19,13 +19,13 @@
 -- \c enoteca_db_test
 \c enoteca_db
 
-INSERT INTO eno_user (email, password_digest) 
+-- INSERT INTO eno_user (email, password_digest) 
 
-VALUES
+-- VALUES
 
-('flastname-1@lukemail.com', 'FFFFFFccccccABCDEFabcdefABCDEFab')
+-- ('flastname-1@lukemail.com', 'FFFFFFccccccABCDEFabcdefABCDEFab')
 
-RETURNING id;
+-- RETURNING id;
 
 INSERT INTO wine_style_ref (stl_name, flavor, food_match, description, image_grp_url, image_style_url)
 VALUES 
@@ -66,6 +66,8 @@ VALUES
 ('Stoneleigh Marlborough Sauvignon Blanc','White Wine','Aromatic & Flavourful','New Zealand, Region Not Specified','750 mL bottle','2016-11-18','Looking for something to please everyone? This famed New Zealand white has classic Sauvignon Blanc flavours of gooseberry, herbs and tropical fruit. It''s excellent with our scallops and chorizo bites.','Looking for something to please everyone? This famed New Zealand white has classic Sauvignon Blanc flavours of gooseberry, herbs and tropical fruit. It''s excellent with our scallops and chorizo bites.','https://dx5vpyka4lqst.cloudfront.net/products/293043/images/thumb.png','https://dx5vpyka4lqst.cloudfront.net/products/293043/images/full.jpeg','Sauvignon Blanc','5','1795','1300','XD - Extra Dry','Pernod Ricard Pacific Pty Ltd')
 
 RETURNING id;
+
+-- UPDATE wine_product SET producer_name = 'Villa Maria Estates Ltd.', prdct_name = 'Villa Maria Private Bin Sauvignon Blanc Marlborough', category = null, style = 'Light & Crisp', origin = 'New Zealand, Marlborough', package = '750 mL bottle', released_on = '2010-09-22', description = null, tasting_note = 'Pale straw colour; intense aromas of gooseberry, lime, grass and asparagus; dry, medium bodied, crisp acidity, and flavours of bell pepper, gooseberry citrus; clean, crisp finish.', image_thumb_url = 'https://dx5vpyka4lqst.cloudfront.net/products/426601/images/thumb.png', image_url = 'https://dx5vpyka4lqst.cloudfront.net/products/426601/images/full.jpeg', varietal = 'Sauvignon Blanc', sugar_grm_ltr = '6', sugar_cntnt = 'XD - Extra Dry', alcohol_cntnt = '1250', reg_price_cc = '1795' WHERE wine_product.id = 7 RETURNING *;
 
 
 

@@ -56,6 +56,7 @@
                 <h1>Wines Fetched From API</h1>
                 
                 <div class="table_div">
+
                     <table>
                       <tr>
                         <th>Save to DB</th>
@@ -66,42 +67,51 @@
                         <th>Price</th>
                         <th>Image on Web</th>
                       </tr>
-                    </table>
-                    <div class="table">
-                      {{#wnsAPIdt}}
-                      <form class="tr" method="post" action="/wines/create">
-                         <span class="td"><input value="Save" type="submit" /></span>
-                         <span class="td"><input name="name" value="{{name}}" type="text" readonly /></span>
-                         <span class="td"><input name="origin" value="{{origin}}" type="text" readonly /></span>
-                         <span class="td"><input name="released_on" value="{{released_on}}" type="text" readonly /></span>
-                         <span class="td"><input name="image_thumb_url" value="{{image_thumb_url}}" type="hidden" /><img src="{{image_thumb_url}}" alt="thumb" height="79.75" width="59.75" /></span>
-                         <span class="td"><input name="regular_price_in_cents" value="{{regular_price_in_cents}}" type="text" readonly /></span>
-                         <span class="td"><input name="image_ur" value="{{image_ur}}" type="hidden" /><a href="{{image_url}}">See it on the Web</a></span>
-                         <span class="td"><input name="secondary_category" value="{{secondary_category}}" type="hidden"/></span>
-                         <span class="td"><input name="package" value="{{package}}" type="hidden"/></span>
-                         <span class="td"><input name="alcohol_content" value="{{alcohol_content}}" type="hidden"/></span>
-                         <span class="td"><input name="sugar_content" value="{{sugar_content}}" type="hidden"/></span>
-                         <span class="td"><input name="producer_name" value="{{producer_name}}" type="hidden"/></span>
-                         <span class="td"><input name="description" value="{{description}}" type="hidden"/></span>
-                         <span class="td"><input name="tasting_note" value="{{tasting_note}}" type="hidden"/></span>
-                         <span class="td"><input name="varietal" value="{{varietal}}" type="hidden"/></span>
-                         <span class="td"><input name="style" value="{{style}}" type="hidden"/></span>
-                         <span class="td"><input name="sugar_in_grams_per_liter" value="{{sugar_in_grams_per_liter}}" type="hidden"/></span>
+                    <!-- </table> -->
 
-                      </form>
-          
-          <!-- 
-                      <tr>
-                        <td><a href="/create" title="">Save</a></td>
-                        <td>{{name}}</td>
-                        <td>{{origin}}</td>
-                        <td>{{released_on}}</td> 
-                        <td><img src="{{image_thumb_url}}" alt="thumb" height="79.75" width="59.75" /></td>
-                        <td>{{regular_price_in_cents}}</td>
-                        <td><a href="{{image_url}}">See it on the Web</a></td>
-                      </tr> -->
-                      {{/wnsAPIdt}}
+                    {{#wnsAPIdt}}
+ 
+                    <div class="table">
+                        <form class="tr" method="post" action="/wines/create">
+                        <!-- <table> -->
+                        <tr>
+                            
+                             <td><span class="td"><input value="Save" type="submit" /></span></td>
+
+                             <td><span class="td"><input name="name" value="{{name}}" type="text" size="26" readonly /></span></td>
+
+                             <td><span class="td"><input name="origin" value="{{origin}}" type="text" size="26" readonly /></span></td>
+
+                             <td><span class="td"><input name="released_on" value="{{released_on}}" type="text" size="12" readonly /></span></td>
+
+                             <td><span class="td"><input name="image_thumb_url" value="{{image_thumb_url}}" type="hidden" /><img src="{{image_thumb_url}}" alt="thumb" height="79.75" width="59.75" /></span></td>
+
+                             <td><span class="td"><input name="regular_price_in_cents" value="{{regular_price_in_cents}}" type="text" size="8" readonly /></span></td>
+
+                             <td><span class="td"><input name="image_url" value="{{image_url}}" type="hidden" /><a href="{{image_url}}">Image on Web</a></span></td>
+
+
+                            <!-- Hidden fields -->
+                             <span class="td"><input name="secondary_category" value="{{secondary_category}}" type="hidden" /></span>
+                             <span class="td"><input name="package" value="{{package}}" type="hidden"/></span>
+                             <span class="td"><input name="alcohol_content" value="{{alcohol_content}}" type="hidden"/></span>
+                             <span class="td"><input name="sugar_content" value="{{sugar_content}}" type="hidden"/></span>
+                             <span class="td"><input name="producer_name" value="{{producer_name}}" type="hidden"/></span>
+                             <span class="td"><input name="description" value="{{description}}" type="hidden"/></span>
+                             <span class="td"><input name="tasting_note" value="{{tasting_note}}" type="hidden"/></span>
+                             <span class="td"><input name="varietal" value="{{varietal}}" type="hidden"/></span>
+                             <span class="td"><input name="style" value="{{style}}" type="hidden"/></span>
+                             <span class="td"><input name="sugar_in_grams_per_liter" value="{{sugar_in_grams_per_liter}}" type="hidden"/></span>  
+                             <!-- End of Hidden fields -->
+                            
+                         </tr>
+                         </form>
                     </div>
+
+                    {{/wnsAPIdt}}
+
+                    </table>
+                      
                 </div>
 
             </div>
@@ -112,7 +122,7 @@
             <div class="back-to">
                 <ul>
                     <li>
-                        <a href="/search">Back to Search</a>
+                        <a href="/wines/search">To Search</a>
                     </li>
                 </ul>  
             </div>

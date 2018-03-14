@@ -110,7 +110,7 @@ router.get(
     // that if the user is not authenticated,
     // he or she will be redirected to the
     // login screen...
-    auth.restrict,
+    auth.restrict,     // On Mar 13 at 22:13...
     User.findByEmailMiddleware,
     (req, res) => {
         console.log('In handler for users/profile ');

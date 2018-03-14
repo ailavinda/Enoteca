@@ -90,10 +90,11 @@ router.get(
 
 // Show single wine from DB by id...
 router.get(
-    '/:wineId', 
+    '/:id', 
     winesMdl.findById, (req, res, next) => {
-        console.log(JSON.stringify(res.locals.wineData));
-    res.render("showWineDB", res.locals.wineData);
+        console.log('In GET /:wineId router (= /wines/:wineId), controllers/wines.js');
+        console.log(JSON.stringify(res.locals.wineIdData));
+    res.render("showWineDB", res.locals.wineIdData);
 });
 
 // This is according to MDN, which recommends
@@ -134,18 +135,19 @@ router.post(
 
 // Update DB record by id...
 router.put(
-    '/:wineId', 
+    '/:id', 
     // auth.restrict, 
     winesMdl.update, (req, res, next) => {
+        console.log("In PUT for /wines/:id... controllers/wines.js")
     res.json(res.locals.updatedWineData);
 });
 
 // Destroy DB record by id...
 router.delete(
-    '/:wineId',
+    '/:id',
     // auth.restrict,  
     winesMdl.destroy, (req, res, next) => {
-    res.json({ id: req.params.wineId }); // perhaps, just a {}?...
+    res.json({ id: req.params.id }); // perhaps, just a {}?...
 });
 
 

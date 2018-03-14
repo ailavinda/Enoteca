@@ -95,9 +95,9 @@ const app = express();
 app.use(cors());
 
 // ...to enable HTTP cookies over CORS... see above...
-// app.use(cors({
-//   credentials: true,
-// }));
+app.use(cors({
+  credentials: true,
+}));
 // ... and later, use with AJAX calls:
 // xhr.withCredentials = true;
 
@@ -157,6 +157,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Uncomment if app.use(tokenServie.receiveToken); below is
+// enabled...
 app.use(cookieParser());
 
 //////////////////////////////////////////////////////////////

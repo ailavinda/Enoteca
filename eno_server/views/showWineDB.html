@@ -21,7 +21,7 @@
             <div class="logo">
                 <ul>
                     <li>
-                        Logo
+                        Enoteca
                     </li>
                 </ul>
                 
@@ -39,7 +39,7 @@
                 <div class="item_menu">
                     <ul>
                         <li>
-                            <a href="/artcls">All Articles</a>
+                            <a href="/wines/searchDB">Wines DB</a>
                         </li>
                     </ul>
                     
@@ -48,48 +48,165 @@
             </div>
         </div>
             
-        <div class="table_artcls">
-          <section>
+        <div class="table_wines">
+            <div class="big_header">
+                <h1>{{prdct_name}} <img src="{{image_thumb_url}}" alt="thumb" height="79.75" width="59.75" /></h1> 
+            </div>
 
-            <div class="art_table_contr">
+            <div class="wine_table_contr">
 
-                <h1>Articles From DataBase</h1>
-
-                <!-- <div class="artcl_id">
-                    {{id}}
-                </div> -->
-
-             <!--    <div class="artcl_api_url">
-                    {{apiurl}}
-                </div> -->
-                
-                <div class="table_div">
-                    <table>
-                        <!-- <caption>Monthly savings</caption> -->
-
-                          <tr>
-                            <th>Go to Article</th>
-                            <th>Article ID</th>
-                            <th>Web ID</th>
-                            <th>Author</th> 
-                            <th>Web Date</th>
-                            <th>Short URL</th>
-                            <th>Article Trail</th>
-                          </tr>
-                          {{#artDBdt}}
-                          <tr>
-                            <td><<a href="/:{{artcl_id}}" title="">To Sinle Article</a></td>
-                            <td>{{artcl_id}}</td>
-                            <td>{{artcl_web_id}}</td>
-                            <td>{{artcl_author}}</td> 
-                            <td>{{artcl_web_date}}</td>
-                            <td><<a href="{{artcl_short_url}}">See on the Web</a></td>
-                            <td>{{artcl_trail}}</td>
-                          </tr>
-                          {{/artDBdt}}
-                    </table>
+                <div class="big_image_div">
+                    <img src="{{image_url}}" alt="big_image" height="399" width="299" />
                 </div>
 
+                <div class="single_wine_div">
+
+                    <div class="first_subfield">
+                        <form class="update" method="post" action="/wines/{{id}}">
+                            <input name="id" value="{{id}}" type="hidden" />
+                         <fieldset>
+                            <legend>Product Name</legend>
+                               <ul>
+                                <li>
+                                    <input name="prdct_name" value="{{prdct_name}}" type="text" size="40" />
+                                </li>
+                               </ul>
+                        </fieldset>   
+                        <fieldset>
+                            <legend>Product Origination</legend>
+                               <ul>
+                                <li>
+                                    <input name="origin" value="{{origin}}" type="text" size="40" />
+                                </li>
+                               </ul>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Product Release Date</legend>
+                               <ul>
+                                <li>
+                                    <input name="released_on" value="{{released_on}}" type="text" size="12" />
+                                </li>
+                               </ul>
+                        </fieldset> 
+                        <fieldset>
+                            <legend>Product Thumb Image URL</legend>
+                               <ul>
+                                <li>
+                                    <input name="image_thumb_url" value="{{image_thumb_url}}" type="text" size="40" />
+                                </li>
+                               </ul>
+                        </fieldset>   
+                        <fieldset>
+                            <legend>Product Regular Price in Cents</legend>
+                               <ul>
+                                <li>
+                                    <input name="reg_price_cc" value="{{reg_price_cc}}" type="text" size="8" />
+                                </li>
+                               </ul>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Product Big Image URL</legend>
+                               <ul>
+                                <li>
+                                    <input name="image_url" value="{{image_url}}" type="text" size="40" />
+                                </li>
+                               </ul>
+                        </fieldset>
+                        <fieldset>  <!-- Hidden fields -->
+                            <legend>Product Secondary Category</legend>
+                               <ul>
+                                <li>
+                                    <input name="category" value="{{category}}" type="text" />
+                                </li>
+                               </ul>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Product Packaging Information</legend>
+                               <ul>
+                                <li>
+                                    <input name="package" value="{{package}}" type="text"/>
+                                </li>
+                               </ul>
+                        </fieldset>  
+                        <fieldset>
+                            <legend>Product Alcohol Content</legend>
+                               <ul>
+                                <li>
+                                    <input name="alcohol_cntnt" value="{{alcohol_cntnt}}" type="text"/>
+                                </li>
+                               </ul>
+                        </fieldset> 
+                    </div>
+
+                    <div class="second_subfield"> 
+                        &nbsp;
+                        <fieldset>
+                            <legend>Product Sugar Content</legend>
+                               <ul>
+                                <li>
+                                    <input name="sugar_cntnt" value="{{sugar_cntnt}}" type="text"/>
+                                </li>
+                               </ul>
+                        </fieldset>  
+                        <fieldset>
+                            <legend>Product Producer Name</legend>
+                               <ul>
+                                <li>
+                                    <input name="producer_name" value="{{producer_name}}" type="text" size="40" />
+                                </li>
+                               </ul>
+                        </fieldset>    
+                        <fieldset>
+                            <legend>Product Description</legend>
+                               <ul>
+                                <li>
+                                    <input name="description" value="{{description}}" type="text" size="40" />
+                                </li>
+                               </ul>
+                        </fieldset>    
+                        <fieldset>
+                            <legend>Product Tasting Notes</legend>
+                               <ul>
+                                <li>
+                                    <input name="tasting_note" value="{{tasting_note}}" type="text" size="40" />
+                                </li>
+                               </ul>
+                        </fieldset>   
+                        <fieldset>
+                            <legend>Product Varietal (Major Grape)</legend>
+                               <ul>
+                                <li>
+                                    <input name="varietal" value="{{varietal}}" type="text"/>
+                                </li>
+                               </ul>
+                        </fieldset>  
+                        <fieldset>
+                            <legend>Product Style</legend>
+                               <ul>
+                                <li>
+                                    <input name="style" value="{{style}}" type="text"/>
+                                </li>
+                               </ul>
+                        </fieldset>   
+                        <fieldset>
+                            <legend>Product Sugar in Grams per Liter</legend>
+                               <ul>
+                                <li>
+                                    <input name="sugar_grm_ltr" value="{{sugar_grm_ltr}}" type="text"/>
+                                </li>
+                               </ul>
+                        </fieldset>  <!-- End of Hidden fields -->
+                        <fieldset>
+                            <legend>Submit</legend>
+                               <ul>
+                                <li>
+                                    <input value="Save" type="submit" />
+                                </li>
+                               </ul>
+                        </fieldset> 
+                    </div> 
+
+                </div>
             </div>
           </section>
         </div>
@@ -98,7 +215,7 @@
             <div class="back-to">
                 <ul>
                     <li>
-                        <a href="/artcls">Back to search</a>
+                        <a href="/wines/searchDB">To DB list</a>
                     </li>
                 </ul>  
             </div>
