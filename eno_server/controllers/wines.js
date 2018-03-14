@@ -139,7 +139,9 @@ router.put(
     // auth.restrict, 
     winesMdl.update, (req, res, next) => {
         console.log("In PUT for /wines/:id... controllers/wines.js")
-    res.json(res.locals.updatedWineData);
+        // res.json(res.locals.updatedWineData);
+        console.log("After update: ", res.locals.updatedWineData);
+        res.redirect('/wines/'+res.locals.updatedWineData.id);
 });
 
 // Destroy DB record by id...
@@ -147,7 +149,8 @@ router.delete(
     '/:id',
     // auth.restrict,  
     winesMdl.destroy, (req, res, next) => {
-    res.json({ id: req.params.id }); // perhaps, just a {}?...
+    // res.json({ id: req.params.id }); 
+    res.redirect('/wines/searchDB');
 });
 
 

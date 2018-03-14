@@ -62,8 +62,7 @@
                 <div class="single_wine_div">
 
                     <div class="first_subfield">
-                        <form class="update" method="post" action="/wines/{{id}}">
-                            <input name="id" value="{{id}}" type="hidden" />
+                        <form class="update" method="post" action="/wines/{{id}}?_method=PUT">
                          <fieldset>
                             <legend>Product Name</legend>
                                <ul>

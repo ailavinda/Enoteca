@@ -24,6 +24,8 @@
 
 // Import dependencies...
 const express = require("express");
+// Need this to allow form POST to be trearted as PUT...
+const methodOverride = require('method-override')
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 
@@ -90,6 +92,9 @@ console.log('process.env.PORT: ', process.env.PORT);
 
 // Configure app...
 const app = express();
+// override with POST having ?_method=DELETE ...or PUT
+// https://github.com/expressjs/method-override...
+app.use(methodOverride('_method'))
 
 // Setup cors to allow front-end...
 app.use(cors());
@@ -157,8 +162,16 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// This is to handle form POST request as PUT...
+// see...
+//https://stackoverflow.com/questions/12765431/how-to-send-a-put-request-from-html-form-in-express-and-node
+// NOT bundled with express anymore...
+// app.use(express.bodyParser())
+// app.use(express.methodOverride())
+
+
 // Uncomment if app.use(tokenServie.receiveToken); below is
-// enabled...
+// not enabled...
 app.use(cookieParser());
 
 //////////////////////////////////////////////////////////////

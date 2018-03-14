@@ -51,14 +51,14 @@
         <div class="table_wines">
           <section>
 
-            <div class="wine_table_contr">
+            <div class="wine_table_db">
 
                 <h1>Wines saved to DB</h1>
                 
                 <div class="table_div">
                     <table>
-
                           <tr>
+                            <th>Delete</th>
                             <th>Go to Wine</th>
                             <th>Wine Name</th>
                             <th>Wine Origin</th>
@@ -69,6 +69,12 @@
                           </tr>
                           {{#winesDB}}
                           <tr>
+                            <td>
+                                <form class="update" method="post" action="/wines/{{id}}?_method=DELETE">
+                                    <input type="submit" value="Del" />
+                                    <!-- <button type="submit">Del</button> -->
+                                </form>
+                            </td>
                             <td><a href="/wines/{{id}}" title="record_id_{{id}}">Look up</a></td>
                             <td>{{prdct_name}}</td>
                             <td>{{origin}}</td>

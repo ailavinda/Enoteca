@@ -502,8 +502,9 @@ winesMdl.update = (req, res, next) => {
 //          Delete single record from DB             //
 ///////////////////////////////////////////////////////
 winesMdl.destroy = (req, res, next) => {
+  console.log("In destroy with req.params.id: ", req.params.id);
   db
-    .none("DELETE FROM wine_product WHERE wine_product.id = $1", [req.params.wineId])
+    .none("DELETE FROM wine_product WHERE id = $1", [req.params.id])
     .then(() => {
       next();
     })
